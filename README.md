@@ -1,37 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📋 Register Form App with React Hook Form + Zod
 
-## Getting Started
+このプロジェクトは、`react-hook-form` と `zod` を使ったフォームバリデーションの練習用アプリケーションです。Next.js と Tailwind CSS をベースに構築されています。
 
-First, run the development server:
+## 🧰 使用技術スタック
+
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Zod](https://zod.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+---
+
+## 🚀 起動方法
 
 ```bash
+git clone https://github.com/your-username/register-form-app.git
+cd register-form-app
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ディレクトリ構成
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+register-form-app/
+├── src/
+│   ├── app/               # Next.js App Router
+│   ├── components/        # UIコンポーネント
+│   │   └── RegisterForm.tsx
+│   ├── lib/               # APIやユーティリティ
+│   │   └── api.ts
+│   ├── schemas/           # Zodスキーマ
+│   │   └── registerSchema.ts
+│   └── styles/            # グローバルスタイル
+│       └── globals.css
+├── public/
+├── tailwind.config.ts
+├── postcss.config.js
+└── README.md
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧱 アーキテクチャ・設計方針
 
-## Learn More
+このプロジェクトでは、**保守性・再利用性・スケーラビリティ** を意識して以下のような設計方針を採用しています。
 
-To learn more about Next.js, take a look at the following resources:
+### 🔹 コンポーネントの分割
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+RegisterForm は1つの大きなフォームとして定義されていますが、実際には以下のような小さな再利用可能なコンポーネントに分割されています：
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `TextInput`：ラベル・エラー表示付きの基本入力コンポーネント
+- `FormError`：エラー表示専用コンポーネント
 
-## Deploy on Vercel
+**メリット：**
+- 再利用可能な部品として使える
+- テストや保守が簡単になる
+- UI の一貫性を保ちやすくなる
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🔹 スキーマバリデーションと責務分離
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# react-hook-form-zod
+Zod によるバリデーションロジックは `schemas/` ディレクトリに切り出しており、**UI とロジックの責務を明確に分けた構成**となっています。
+
+
