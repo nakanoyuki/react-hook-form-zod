@@ -1,6 +1,6 @@
 // src/components/TextInput.stories.tsx
 import type { Meta, StoryObj } from "@storybook/react";
-import { TextInput } from "./TextInput";
+import { TextInput } from "../components/form/TextInput";
 
 const meta: Meta<typeof TextInput> = {
   component: TextInput,

@@ -1,6 +1,6 @@
 // src/components/RegisterForm.stories.tsx
 import type { Meta, StoryObj } from "@storybook/react";
-import { RegisterForm } from "./RegisterForm";
+import { RegisterForm } from "../components/RegisterForm";
 
 const meta: Meta<typeof RegisterForm> = {
   component: RegisterForm,
