@@ -1,10 +1,15 @@
 type TextInputProps = {
   label?: string;
+  name: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
-export const TextInput = ({ label, ...props }: TextInputProps) => (
+export const TextInput = ({ label, name, ...props }: TextInputProps) => (
   <div>
-    {label && <label className="text-sm font-semibold">{label}</label>}
-    <input {...props} className="border p-2" />
+    {label && (
+      <label htmlFor={name} className="text-sm font-semibold">
+        {label}
+      </label>
+    )}
+    <input id={name} name={name} {...props} className="border p-2" />
   </div>
 );

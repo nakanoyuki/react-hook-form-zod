@@ -54,6 +54,7 @@ export const RegisterForm = () => {
           <TextInput
             {...register(field.name)}
             label={field.label}
+            name={field.name}
             placeholder={field.label}
           />
           <FormError errormessage={errors[field.name]?.message} />
